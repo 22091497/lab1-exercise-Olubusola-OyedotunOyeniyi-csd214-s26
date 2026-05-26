@@ -1,4 +1,60 @@
 # Bookstore CLI Application
+
+Lab 1: Analysis
+Problem Statement
+My niche store focuses on selling medical equipment and healthcare devices for both professionals and home users. The store offers products such as diagnostic tools, monitoring devices, and mobility aids designed to improve patient care and quality of life. Customers include hospitals, clinics, caregivers, and individuals managing chronic conditions at home. The system must support categorizing equipment, tracking product details, and enabling efficient browsing and purchasing. This niche emphasizes reliability, safety, and usability of medical-grade products.
+
+Noun/Verb Table
+
+Nouns (classes/attributes):
+
+Product
+
+MedicalEquipment
+
+Device
+
+Patient
+
+Prescription
+
+Manufacturer
+
+Verbs (methods):
+
+addItem()
+
+removeItem()
+
+calculatePrice()
+
+displayDetails()
+
+Synonym Identification
+
+Device = Equipment
+
+Patient = Customer
+
+Step 2: Architectural Blueprint
+Class Design
+
+Product (base class)
+
+MedicalEquipment (abstract class) extends Product
+
+Field: String usageType
+
+BloodPressureMonitor (concrete class) extends MedicalEquipment
+
+Field: boolean digital
+
+Wheelchair (concrete class) extends MedicalEquipment
+
+Field: boolean electric
+
+
+
 > [git repository: ](https://github.com/fcarella/bookstore-2026-01-30)
 
 - A console-based Java application for managing a bookstore inventory, performing sales, and tracking cash flow. This project demonstrates object-oriented programming concepts including inheritance, polymorphism, and interface implementation in Java 24.

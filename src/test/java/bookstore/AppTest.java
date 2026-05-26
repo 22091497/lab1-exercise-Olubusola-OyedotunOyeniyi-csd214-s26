@@ -10,7 +10,7 @@ import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    private final InputStream originalSystemIn = System.in;
+    public final InputStream originalSystemIn = System.in;
 
     @AfterEach
     void tearDown() {

@@ -1,5 +1,7 @@
 package bookstore.pojos;
 
+import java.util.Scanner;
+
 public class Tire extends VehiclePart {
     // 1. Concrete Subclass Fields
     public int size;
@@ -44,5 +46,20 @@ public class Tire extends VehiclePart {
                 ", size=" + size +
                 ", tireType='" + tireType + '\'' +
                 '}';
+    }
+
+    @Override
+    public void edit(Scanner input) {
+
+    }
+
+    @Override
+    public void initialize(Scanner input) {
+
+    }
+
+    @Override
+    public void sellItem() {
+
     }
 }

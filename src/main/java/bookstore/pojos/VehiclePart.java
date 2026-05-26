@@ -1,49 +1,38 @@
 package bookstore.pojos;
 
-public class Battery extends VehiclePart {
-    // 1. Concrete Subclass Fields
-    private int capacityAh;  // Battery capacity in Ampere-hours
-    private int voltage;     // e.g., 12V, 24V
+public abstract class VehiclePart extends Product {
+    // Private attributes matching the UML diagram
+    private String manufacturer;
+    private double price;
 
-    // 2. Default No-Argument Constructor
-    public Battery() {
+    // Default No-Argument Constructor
+    public VehiclePart() {
         super();
     }
 
-    // 3. Parameterized Constructor
-    public Battery(String manufacturer, double price, int capacityAh, int voltage) {
-        // Invokes the parent VehiclePart constructor to pass manufacturer and price
-        super(manufacturer, price);
-        this.capacityAh = capacityAh;
-        this.voltage = voltage;
+    // Parameterized Constructor
+    public VehiclePart(String manufacturer, double price) {
+        super();
+        this.manufacturer = manufacturer;
+        this.price = price;
     }
 
-    // 4. Getters and Setters
-    public int getCapacityAh() {
-        return capacityAh;
-    }
-
-    public void setCapacityAh(int capacityAh) {
-        this.capacityAh = capacityAh;
-    }
-
-    public int getVoltage() {
-        return voltage;
-    }
-
-    public void setVoltage(int voltage) {
-        this.voltage = voltage;
-    }
-
-    // 5. toString Override for Clean Debugging Output
+    // Overridden method implementation from the SaleableItem interface
     @Override
-    public String toString() {
-        return "Battery{" +
-                "manufacturer='" + getManufacturer() + '\'' +
-                ", price=" + getPrice() +
-                ", capacityAh=" + capacityAh +
-                "Ah, voltage=" + voltage +
-                "V" +
-                '}';
+    public double getPrice() {
+        return this.price;
+    }
+
+    // Standard Getter and Setter methods
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

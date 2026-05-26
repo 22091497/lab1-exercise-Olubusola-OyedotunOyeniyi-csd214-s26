@@ -1,4 +1,4 @@
-package PACKAGE_NAME;
+package bookstore.pojos;
 
 public class Battery {
 }

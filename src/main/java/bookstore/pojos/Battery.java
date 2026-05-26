@@ -2,8 +2,8 @@ package bookstore.pojos;
 
 public class Battery extends VehiclePart {
     // 1. Concrete Subclass Fields
-    private int capacityAh;  // Battery capacity in Ampere-hours
-    private int voltage;     // e.g., 12V, 24V
+    public int capacityAh;  // Battery capacity in Ampere-hours
+    public int voltage;     // e.g., 12V, 24V
 
     // 2. Default No-Argument Constructor
     public Battery() {

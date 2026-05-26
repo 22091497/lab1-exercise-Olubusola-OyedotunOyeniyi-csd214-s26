@@ -1,5 +1,7 @@
 package bookstore.pojos;
 
+import java.util.Scanner;
+
 public class Battery extends VehiclePart {
     // 1. Concrete Subclass Fields
     public int capacityAh;  // Battery capacity in Ampere-hours
@@ -45,5 +47,20 @@ public class Battery extends VehiclePart {
                 "Ah, voltage=" + voltage +
                 "V" +
                 '}';
+    }
+
+    @Override
+    public void edit(Scanner input) {
+
+    }
+
+    @Override
+    public void initialize(Scanner input) {
+
+    }
+
+    @Override
+    public void sellItem() {
+
     }
 }

@@ -1,19 +1,17 @@
 package bookstore;
 
 import bookstore.pojos.*;
-import com.github.javafaker.Faker;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class App {
-    private List<SaleableItem> items = new ArrayList<>();
-    private CashTill cashTill = new CashTill();
+    private final List<SaleableItem> items = new ArrayList<>();
+    private final CashTill cashTill = new CashTill();
     private Scanner input = new Scanner(System.in);
 
-    public void addItem() {
+    private void addItem(SaleableItem item) {
         int choice = 0;
         while (choice != 99) {
             System.out.println("\nAdd an item\n");
@@ -33,7 +31,8 @@ public class App {
                 choice = 0;
             }
 
-            if (choice == 99) return;
+
+                if (choice == 99) return;
 
             SaleableItem item = null;
             switch(choice) {
@@ -54,4 +53,15 @@ public class App {
 
             addItem(item);
         }
+    }
+
+    public void run() {
+    }
+
+    public List<SaleableItem> getItems() {
+        return items;
+    }
+
+    public CashTill getCashTill() {
+        return cashTill;
     }

@@ -1,38 +1,49 @@
 package bookstore.pojos;
 
-public abstract class VehiclePart extends Product {
-    // 1. Private Fields
-    private String manufacturer;
-    private double price;
+public class Battery extends VehiclePart {
+    // 1. Concrete Subclass Fields
+    private int capacityAh;  // Battery capacity in Ampere-hours
+    private int voltage;     // e.g., 12V, 24V
 
     // 2. Default No-Argument Constructor
-    public VehiclePart() {
-        super(); // Invokes the parent Product constructor
+    public Battery() {
+        super();
     }
 
     // 3. Parameterized Constructor
-    public VehiclePart(String manufacturer, double price) {
-        super(); // Invokes the parent Product constructor
-        this.manufacturer = manufacturer;
-        this.price = price;
+    public Battery(String manufacturer, double price, int capacityAh, int voltage) {
+        // Invokes the parent VehiclePart constructor to pass manufacturer and price
+        super(manufacturer, price);
+        this.capacityAh = capacityAh;
+        this.voltage = voltage;
     }
 
-    // 4. Overridden Method from SaleableItem Interface
+    // 4. Getters and Setters
+    public int getCapacityAh() {
+        return capacityAh;
+    }
+
+    public void setCapacityAh(int capacityAh) {
+        this.capacityAh = capacityAh;
+    }
+
+    public int getVoltage() {
+        return voltage;
+    }
+
+    public void setVoltage(int voltage) {
+        this.voltage = voltage;
+    }
+
+    // 5. toString Override for Clean Debugging Output
     @Override
-    public double getPrice() {
-        return this.price;
-    }
-
-    // 5. Getters and Setters (Standard for Java Beans/POJOs)
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
+    public String toString() {
+        return "Battery{" +
+                "manufacturer='" + getManufacturer() + '\'' +
+                ", price=" + getPrice() +
+                ", capacityAh=" + capacityAh +
+                "Ah, voltage=" + voltage +
+                "V" +
+                '}';
     }
 }

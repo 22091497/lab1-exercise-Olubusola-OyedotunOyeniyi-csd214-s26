@@ -2,7 +2,7 @@ package bookstore.pojos;
 
 public class Tire extends VehiclePart {
     // 1. Concrete Subclass Fields
-    private int size;
+    public int size;
     private String tireType; // e.g., "All-Season", "Winter", "Performance"
 
     // 2. Default No-Argument Constructor

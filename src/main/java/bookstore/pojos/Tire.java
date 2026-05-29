@@ -3,24 +3,19 @@ package bookstore.pojos;
 import java.util.Scanner;
 
 public class Tire extends VehiclePart {
-    // 1. Concrete Subclass Fields
-    public int size;
-    private String tireType; // e.g., "All-Season", "Winter", "Performance"
+    private int size;
+    private String tireType;
 
-    // 2. Default No-Argument Constructor
     public Tire() {
         super();
     }
 
-    // 3. Parameterized Constructor
     public Tire(String manufacturer, double price, int size, String tireType) {
-        // Invokes the parent VehiclePart constructor to pass manufacturer and price
         super(manufacturer, price);
         this.size = size;
         this.tireType = tireType;
     }
 
-    // 4. Getters and Setters
     public int getSize() {
         return size;
     }
@@ -37,7 +32,6 @@ public class Tire extends VehiclePart {
         this.tireType = tireType;
     }
 
-    // 5. toString Override for Clean Debugging Output
     @Override
     public String toString() {
         return "Tire{" +
@@ -49,17 +43,38 @@ public class Tire extends VehiclePart {
     }
 
     @Override
-    public void edit(Scanner input) {
-
+    public void initialize(Scanner input) {
+        System.out.print("Enter Manufacturer: ");
+        setManufacturer(input.nextLine());
+        System.out.print("Enter Price: ");
+        setPrice(Double.parseDouble(input.nextLine()));
+        System.out.print("Enter Tire Size (inches): ");
+        this.size = Integer.parseInt(input.nextLine());
+        System.out.print("Enter Tire Type (e.g., Winter, Performance): ");
+        this.tireType = input.nextLine();
     }
 
     @Override
-    public void initialize(Scanner input) {
+    public void edit(Scanner input) {
+        System.out.print("Enter New Manufacturer (Press Enter to keep current): ");
+        String nextMan = input.nextLine();
+        if (!nextMan.isBlank()) setManufacturer(nextMan);
 
+        System.out.print("Enter New Price (Press Enter to keep current): ");
+        String nextPrice = input.nextLine();
+        if (!nextPrice.isBlank()) setPrice(Double.parseDouble(nextPrice));
+
+        System.out.print("Enter New Size (Press Enter to keep current): ");
+        String nextSize = input.nextLine();
+        if (!nextSize.isBlank()) this.size = Integer.parseInt(nextSize);
+
+        System.out.print("Enter New Tire Type (Press Enter to keep current): ");
+        String nextType = input.nextLine();
+        if (!nextType.isBlank()) this.tireType = nextType;
     }
 
     @Override
     public void sellItem() {
-
+        System.out.println("Tire sold successfully!");
     }
 }

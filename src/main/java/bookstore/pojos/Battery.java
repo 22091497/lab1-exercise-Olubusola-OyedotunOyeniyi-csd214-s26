@@ -3,24 +3,19 @@ package bookstore.pojos;
 import java.util.Scanner;
 
 public class Battery extends VehiclePart {
-    // 1. Concrete Subclass Fields
-    public int capacityAh;  // Battery capacity in Ampere-hours
-    public int voltage;     // e.g., 12V, 24V
+    private int capacityAh;
+    private int voltage;
 
-    // 2. Default No-Argument Constructor
     public Battery() {
         super();
     }
 
-    // 3. Parameterized Constructor
     public Battery(String manufacturer, double price, int capacityAh, int voltage) {
-        // Invokes the parent VehiclePart constructor to pass manufacturer and price
         super(manufacturer, price);
         this.capacityAh = capacityAh;
         this.voltage = voltage;
     }
 
-    // 4. Getters and Setters
     public int getCapacityAh() {
         return capacityAh;
     }
@@ -37,30 +32,49 @@ public class Battery extends VehiclePart {
         this.voltage = voltage;
     }
 
-    // 5. toString Override for Clean Debugging Output
     @Override
     public String toString() {
         return "Battery{" +
                 "manufacturer='" + getManufacturer() + '\'' +
                 ", price=" + getPrice() +
-                ", capacityAh=" + capacityAh +
-                "Ah, voltage=" + voltage +
-                "V" +
+                ", capacityAh=" + capacityAh + "Ah" +
+                ", voltage=" + voltage + "V" +
                 '}';
     }
 
     @Override
-    public void edit(Scanner input) {
-
+    public void initialize(Scanner input) {
+        System.out.print("Enter Manufacturer: ");
+        setManufacturer(input.nextLine());
+        System.out.print("Enter Price: ");
+        setPrice(Double.parseDouble(input.nextLine()));
+        System.out.print("Enter Battery Capacity (Ah): ");
+        this.capacityAh = Integer.parseInt(input.nextLine());
+        System.out.print("Enter Battery Voltage (V): ");
+        this.voltage = Integer.parseInt(input.nextLine());
     }
 
     @Override
-    public void initialize(Scanner input) {
+    public void edit(Scanner input) {
+        System.out.print("Enter New Manufacturer (Press Enter to keep current): ");
+        String nextMan = input.nextLine();
+        if (!nextMan.isBlank()) setManufacturer(nextMan);
 
+        System.out.print("Enter New Price (Press Enter to keep current): ");
+        String nextPrice = input.nextLine();
+        if (!nextPrice.isBlank()) setPrice(Double.parseDouble(nextPrice));
+
+        System.out.print("Enter New Capacity (Press Enter to keep current): ");
+        String nextCap = input.nextLine();
+        if (!nextCap.isBlank()) this.capacityAh = Integer.parseInt(nextCap);
+
+        System.out.print("Enter New Voltage (Press Enter to keep current): ");
+        String nextVolt = input.nextLine();
+        if (!nextVolt.isBlank()) this.voltage = Integer.parseInt(nextVolt);
     }
 
     @Override
     public void sellItem() {
-
+        System.out.println("Battery sold successfully!");
     }
 }

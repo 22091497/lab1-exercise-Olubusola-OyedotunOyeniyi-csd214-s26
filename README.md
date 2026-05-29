@@ -1,60 +1,59 @@
 # Bookstore CLI Application
 
-Lab 1: Analysis
-Problem Statement
-My niche store focuses on selling medical equipment and healthcare devices for both professionals and home users. The store offers products such as diagnostic tools, monitoring devices, and mobility aids designed to improve patient care and quality of life. Customers include hospitals, clinics, caregivers, and individuals managing chronic conditions at home. The system must support categorizing equipment, tracking product details, and enabling efficient browsing and purchasing. This niche emphasizes reliability, safety, and usability of medical-grade products.
+# Lab 1 - Vehicle Parts Inventory System
 
-Noun/Verb Table
+## Custom Niche Domain
+ This assignment, the application was pivoted to an **Automotive / Vehicle Parts** inventory management system.
 
-Nouns (classes/attributes):
+### Core Inventory Entities:
+*   **VehiclePart (Abstract Base Class)**: Extends `Product` and handles generic properties like `manufacturer` and `price`.
+*   **Tire (Concrete Class)**: Implements specialized fields including `size` (int) and `tireType` (String).
+*   **Battery (Concrete Class)**: Implements specialized electronic parameters including `capacityAh` (int) and `voltage` (int).
 
-Product
+## 📊 Noun/Verb Analysis Table
 
-MedicalEquipment
+| Nouns (Entities) | Verbs (Actions) |
+| :--- | :--- |
+| VehiclePart, Tire, Battery | initialize(), edit(), sellItem(), getPrice() |
+| App, Inventory | run(), populate(), findItem() |
 
-Device
+```mermaid
+classDiagram
+    class Product {
+        <<abstract>>
+    }
+    class SaleableItem {
+        <<interface>>
+        +getPrice() double
+    }
+    class VehiclePart {
+        <<abstract>>
+        -String manufacturer
+        -double price
+        +getManufacturer() String
+        +setManufacturer(String) void
+        +getPrice() double
+    }
+    class Tire {
+        -int size
+        -String tireType
+        +initialize(Scanner) void
+        +edit(Scanner) void
+        +sellItem() void
+    }
+    class Battery {
+        -int capacityAh
+        -int voltage
+        +initialize(Scanner) void
+        +edit(Scanner) void
+        +sellItem() void
+    }
 
-Patient
-
-Prescription
-
-Manufacturer
-
-Verbs (methods):
-
-addItem()
-
-removeItem()
-
-calculatePrice()
-
-displayDetails()
-
-Synonym Identification
-
-Device = Equipment
-
-Patient = Customer
-
-Step 2: Architectural Blueprint
-Class Design
-
-Product (base class)
-
-MedicalEquipment (abstract class) extends Product
-
-Field: String usageType
-
-BloodPressureMonitor (concrete class) extends MedicalEquipment
-
-Field: boolean digital
-
-Wheelchair (concrete class) extends MedicalEquipment
-
-Field: boolean electric
-
-
-
+    SaleableItem <|.. Product
+    Product <|-- VehiclePart
+    VehiclePart <|-- Tire
+    VehiclePart <|-- Battery
+```
 > [git repository: ](https://github.com/fcarella/bookstore-2026-01-30)
 
 - A console-based Java application for managing a bookstore inventory, performing sales, and tracking cash flow. This project demonstrates object-oriented programming concepts including inheritance, polymorphism, and interface implementation in Java 24.

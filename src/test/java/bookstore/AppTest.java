@@ -1,4 +1,4 @@
-package bookstore;
+ppackage bookstore;
 
 import bookstore.pojos.*;
 import org.junit.jupiter.api.AfterEach;
@@ -9,54 +9,47 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AppTest {
-    public final InputStream originalSystemIn = System.in;
+public class AppTest {
+    private final InputStream originalSystemIn = System.in;
 
     @AfterEach
-    void tearDown() {
+    public void tearDown() {
         System.setIn(originalSystemIn);
     }
 
     @Test
-    void testAppFlow_AddAndEditBook() {
-        // 1. Build the Clean Script
+    public void testAppFlow_AddAndEditTire() {
         StringBuilder script = new StringBuilder();
 
-        // --- ADD BOOK ---
-        script.append("1\n");             // Main Menu: Add Items
-        script.append("1\n");             // Add Menu: Add Book
-        script.append("Dune\n");          // Title
-        script.append("Frank Herbert\n"); // Author
-        script.append("10\n");            // Copies
-        script.append("25.00\n");         // Price
-        script.append("99\n");            // Exit Add Menu
 
-        // --- EDIT BOOK ---
-        script.append("2\n");             // Main Menu: Edit Items
-        script.append("0\n");             // Select Index 0
-        script.append("Dune Messiah\n");  // Change Title
-        script.append("\n");              // Price: Keep
-        script.append("\n");              // Copies: Keep
-        script.append("\n");              // Author: Keep
+        script.append("1\n");
+        script.append("1\n");
+        script.append("Michelin\n");
+        script.append("150.00\n");
+        script.append("18\n");
+        script.append("All-Season\n");
+        script.append("99\n");
 
-        // --- QUIT ---
-        script.append("99\n");            // Quit
+        script.append("2\n");
+        script.append("0\n");
+        script.append("Bridgestone\n");
+        script.append("\n");
+        script.append("\n");
+        script.append("\n");
 
-        // 2. Inject
+        script.append("99\n");
+
         System.setIn(new ByteArrayInputStream(script.toString().getBytes()));
 
-        // 3. Run
         App app = new App() {
             @Override
-            public void populate() { /* clean start */ }
+            public void populate()  {  }
         };
         app.run();
 
-        // 4. Verify
-        Book expected = new Book("Frank Herbert", "Dune Messiah", 25.00, 10);
-        SaleableItem result = app.findItem(expected);
-
+        assertFalse(app.getItems().isEmpty(), "Inventory should not be empty");
+        Tire result = (Tire) app.getItems().get(0);
         assertNotNull(result);
-        assertEquals("Dune Messiah", ((Book)result).getTitle());
+        assertEquals("Bridgestone", result.getManufacturer());
     }
 }

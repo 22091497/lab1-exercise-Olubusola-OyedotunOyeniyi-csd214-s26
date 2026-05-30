@@ -3,78 +3,56 @@ package bookstore.pojos;
 import java.util.Scanner;
 
 public class Battery extends VehiclePart {
-    private int capacityAh;
-    private int voltage;
+    private int cca;
 
-    public Battery() {
-        super();
-    }
 
-    public Battery(String manufacturer, double price, int capacityAh, int voltage) {
+    public Battery(String manufacturer, double price, int cca, int copies) {
         super(manufacturer, price);
-        this.capacityAh = capacityAh;
-        this.voltage = voltage;
+        this.cca = cca;
+        this.setCopies(copies);
     }
 
-    public int getCapacityAh() {
-        return capacityAh;
+    public int getCca() {
+        return cca;
     }
 
-    public void setCapacityAh(int capacityAh) {
-        this.capacityAh = capacityAh;
-    }
 
-    public int getVoltage() {
-        return voltage;
-    }
-
-    public void setVoltage(int voltage) {
-        this.voltage = voltage;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Battery battery = (Battery) o;
+        return cca == battery.cca;
     }
 
     @Override
-    public String toString() {
-        return "Battery{" +
-                "manufacturer='" + getManufacturer() + '\'' +
-                ", price=" + getPrice() +
-                ", capacityAh=" + capacityAh + "Ah" +
-                ", voltage=" + voltage + "V" +
-                '}';
+    public int hashCode() {
+        return java.util.Objects.hash(super.hashCode(), cca);
     }
 
     @Override
-    public void initialize(Scanner input) {
-        System.out.print("Enter Manufacturer: ");
-        setManufacturer(input.nextLine());
-        System.out.print("Enter Price: ");
-        setPrice(Double.parseDouble(input.nextLine()));
-        System.out.print("Enter Battery Capacity (Ah): ");
-        this.capacityAh = Integer.parseInt(input.nextLine());
-        System.out.print("Enter Battery Voltage (V): ");
-        this.voltage = Integer.parseInt(input.nextLine());
+    protected void setCopies(int copies) {
+
+    }
+
+    @Override
+    public int getCopies() {
+        return 0;
     }
 
     @Override
     public void edit(Scanner input) {
-        System.out.print("Enter New Manufacturer (Press Enter to keep current): ");
-        String nextMan = input.nextLine();
-        if (!nextMan.isBlank()) setManufacturer(nextMan);
 
-        System.out.print("Enter New Price (Press Enter to keep current): ");
-        String nextPrice = input.nextLine();
-        if (!nextPrice.isBlank()) setPrice(Double.parseDouble(nextPrice));
+    }
 
-        System.out.print("Enter New Capacity (Press Enter to keep current): ");
-        String nextCap = input.nextLine();
-        if (!nextCap.isBlank()) this.capacityAh = Integer.parseInt(nextCap);
+    @Override
+    public void initialize(Scanner input) {
 
-        System.out.print("Enter New Voltage (Press Enter to keep current): ");
-        String nextVolt = input.nextLine();
-        if (!nextVolt.isBlank()) this.voltage = Integer.parseInt(nextVolt);
     }
 
     @Override
     public void sellItem() {
-        System.out.println("Battery sold successfully!");
+
     }
 }

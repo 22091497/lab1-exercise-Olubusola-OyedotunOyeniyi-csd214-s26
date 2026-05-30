@@ -20,7 +20,7 @@ public class App {
             int size = faker.number().numberBetween(15, 22);
             String tireType = faker.options().option("All-Season", "Winter", "Performance");
 
-            items.add(new Tire(manufacturer, price, size, tireType));
+            items.add(new Tire(manufacturer, price, size, tireType, 5));
         }
 
 

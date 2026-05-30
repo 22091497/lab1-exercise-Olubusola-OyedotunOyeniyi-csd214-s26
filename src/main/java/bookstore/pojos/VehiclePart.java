@@ -1,5 +1,5 @@
 package bookstore.pojos;
-
+import java.util.Objects;
 public abstract class VehiclePart extends Product {
 
     private String manufacturer;
@@ -10,9 +10,7 @@ public abstract class VehiclePart extends Product {
     }
 
     public VehiclePart(String manufacturer, double price) {
-        super();
-        this.manufacturer = manufacturer;
-        this.price = price;
+
     }
 
     @Override
@@ -31,4 +29,22 @@ public abstract class VehiclePart extends Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        VehiclePart that = (VehiclePart) o;
+        return Double.compare(that.price, price) == 0 &&
+                Objects.equals(manufacturer, that.manufacturer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(manufacturer, price);
+    }
+
+    protected abstract void setCopies(int copies);
+
+    public abstract int getCopies();
 }

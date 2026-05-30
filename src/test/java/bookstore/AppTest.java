@@ -1,4 +1,4 @@
-ppackage bookstore;
+package bookstore;
 
 import bookstore.pojos.*;
 import org.junit.jupiter.api.AfterEach;
@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest {
     private final InputStream originalSystemIn = System.in;
+
 
     @AfterEach
     public void tearDown() {

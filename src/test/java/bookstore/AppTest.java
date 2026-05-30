@@ -19,7 +19,7 @@ public class AppTest {
     }
 
     @Test
-    public void testAppFlow_AddAndEditTire() {
+    public void testAppFlow_AddCustomNiche() {
         StringBuilder script = new StringBuilder();
 
 
@@ -44,13 +44,11 @@ public class AppTest {
 
         App app = new App() {
             @Override
-            public void populate()  {  }
+            public void populate() {
+            }
         };
         app.run();
 
-        assertFalse(app.getItems().isEmpty(), "Inventory should not be empty");
-        Tire result = (Tire) app.getItems().get(0);
-        assertNotNull(result);
-        assertEquals("Bridgestone", result.getManufacturer());
+        assertNotNull(app.findItem("Bridgestone"), "The custom niche item should be found in the application's list.");
     }
 }

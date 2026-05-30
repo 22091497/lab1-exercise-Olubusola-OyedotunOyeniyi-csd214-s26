@@ -4,14 +4,22 @@ import java.util.Scanner;
 
 public class Tire extends VehiclePart {
     private double diameter;
+    private String tireType;
 
-    public Tire(String manufacturer, double price, double diameter, String tireType, int i) {
+    // Corrected 5-argument constructor matching TireTest.java
+    public Tire(String manufacturer, double price, double diameter, String tireType, int copies) {
         super(manufacturer, price);
         this.diameter = diameter;
+        this.tireType = tireType;
+        this.setCopies(copies);
     }
 
     public double getDiameter() {
-        return diameter;
+        return this.diameter;
+    }
+
+    public String getTireType() {
+        return this.tireType;
     }
 
     @Override
@@ -20,22 +28,13 @@ public class Tire extends VehiclePart {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Tire tire = (Tire) o;
-        return Double.compare(tire.diameter, diameter) == 0;
+        return Double.compare(tire.getDiameter(), getDiameter()) == 0 &&
+                java.util.Objects.equals(getTireType(), tire.getTireType());
     }
 
     @Override
     public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), diameter);
-    }
-
-    @Override
-    protected void setCopies(int copies) {
-
-    }
-
-    @Override
-    public int getCopies() {
-        return 0;
+        return java.util.Objects.hash(super.hashCode(), getDiameter(), getTireType());
     }
 
     @Override
@@ -45,11 +44,6 @@ public class Tire extends VehiclePart {
 
     @Override
     public void initialize(Scanner input) {
-
-    }
-
-    @Override
-    public void sellItem() {
 
     }
 }

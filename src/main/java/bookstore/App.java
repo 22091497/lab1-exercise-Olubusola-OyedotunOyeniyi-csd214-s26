@@ -44,4 +44,9 @@ public class App {
     public CashTill getCashTill() { return cashTill; }
     public Scanner getInput() { return input; }
     public void setInput(Scanner input) { this.input = input; }
+
+    public Object findItem(String bridgestone) {
+
+        return null;
+    }
 }

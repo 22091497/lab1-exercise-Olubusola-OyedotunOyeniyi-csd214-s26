@@ -32,7 +32,7 @@ public class Battery extends VehiclePart {
     }
 
     @Override
-    protected void setCopies(int copies) {
+    public void setCopies(int copies) {
 
     }
 
